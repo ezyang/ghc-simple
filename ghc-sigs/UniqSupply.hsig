@@ -1,0 +1,3 @@
+module UniqSupply where
+
+data UniqSupply

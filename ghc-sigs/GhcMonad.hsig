@@ -1,0 +1,22 @@
+module GhcMonad(module GhcMonad, liftIO) where
+
+import HscTypes     (HscEnv)
+import Module       (PackageKey)
+import Control.Monad.IO.Class (MonadIO, liftIO)
+import Exception    (ExceptionMonad)
+import DynFlags     (DynFlags, HasDynFlags)
+
+data Ghc a
+instance Functor Ghc
+instance Monad Ghc
+instance MonadIO Ghc
+instance ExceptionMonad Ghc
+instance HasDynFlags Ghc
+instance GhcMonad Ghc
+
+class (Functor m, MonadIO m, ExceptionMonad m, HasDynFlags m) => GhcMonad m where
+    getSession :: m HscEnv
+    setSession :: HscEnv -> m ()
+
+getSessionDynFlags :: GhcMonad m => m DynFlags
+setSessionDynFlags :: GhcMonad m => DynFlags -> m [PackageKey]

@@ -1,0 +1,76 @@
+module RecDynFlags where
+
+import Avail        (AvailInfo)
+import Fingerprint  (Fingerprint)
+import IfaceSyn     (IfaceDecl)
+import SrcLoc       (SrcSpan)
+import Control.Monad.IO.Class (MonadIO)
+import OccName      (OccName)
+import BasicTypes   (Fixity)
+import Data.IORef   (IORef)
+import DriverPhases     (Phase, HscSource)
+import Module           (ModuleName)
+
+-- FAKE needs more fields
+data Hooks = Hooks
+    { runPhaseHook :: Maybe (PhasePlus -> FilePath -> DynFlags -> CompPipeline (PhasePlus, FilePath))
+    , ghcPrimIfaceHook :: Maybe ModIface
+    }
+
+-- FAKE more constructors
+data HscTarget = HscAsm
+
+-- FAKE more constructors
+data GhcLink = NoLink
+
+type LogAction = DynFlags -> Severity -> SrcSpan -> PprStyle -> MsgDoc -> IO ()
+
+-- FAKE more fields
+data DynFlags = DynFlags {
+    hscTarget :: HscTarget,
+    ghcLink :: GhcLink,
+    log_action :: LogAction,
+    hooks :: Hooks
+    }
+
+data CompPipeline a
+instance Functor CompPipeline
+instance Monad CompPipeline
+instance MonadIO CompPipeline
+
+data PhasePlus = RealPhase Phase | HscOut HscSource ModuleName HscStatus
+
+type IfaceExport = AvailInfo
+-- This is wrong!!
+-- Suggestion: Omit the constructor
+data ModIface = ModIface {
+        mi_exports :: [IfaceExport],
+        mi_decls :: [(Fingerprint, IfaceDecl)],
+        mi_fixities :: [(OccName, Fixity)],
+        mi_fix_fn :: OccName -> Fixity
+    }
+
+
+data HscEnv
+
+-- FAKE needs more variants
+data HscStatus = HscRecomp CgGuts ModSummary
+
+data CgGuts
+
+data ModSummary
+
+data SDoc
+
+data Severity
+  = SevOutput
+  | SevDump
+  | SevInteractive
+  | SevInfo
+  | SevWarning
+  | SevError
+  | SevFatal
+
+data PprStyle
+
+type MsgDoc = SDoc

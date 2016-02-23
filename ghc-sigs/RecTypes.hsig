@@ -1,0 +1,26 @@
+module RecTypes where
+
+import ConLike  (ConLike)
+import CoAxiom  (Branched, CoAxiom)
+import OccName  (OccName)
+
+data Id
+data Name
+data TyCon
+data TyThing
+    = AnId Id
+    | AConLike ConLike
+    | ATyCon TyCon
+    | ACoAxiom (CoAxiom Branched)
+
+-- Placing this is interesting, the instances need to be non-orphan,
+-- but you have some trouble checking signature subsumption: you may
+-- place a signature at the type, but it may not have been defined
+-- that point!
+class NamedThing a where
+    getOccName :: a -> OccName
+    getName    :: a -> Name
+
+instance NamedThing Id
+instance NamedThing Name
+instance NamedThing TyThing

@@ -1,0 +1,8 @@
+module OccName where
+
+import FastString (FastString)
+
+data OccName
+data OccEnv a
+
+mkVarOccFS :: FastString -> OccName

@@ -1,0 +1,5 @@
+module TypeRep(module TypeRep, TyThing(..)) where
+
+import RecTypes (TyThing(..))
+
+data Type

@@ -1,0 +1,9 @@
+module TysPrim where
+
+import Type     (Type)
+import TyCon    (TyCon)
+
+intPrimTy :: Type
+
+primTyCons :: [TyCon]
+funTyCon :: TyCon

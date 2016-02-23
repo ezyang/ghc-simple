@@ -1,0 +1,11 @@
+module SimplStg where
+
+import DynFlags     (DynFlags)
+import Module       (Module)
+import StgSyn       (StgBinding)
+import CostCentre   (CollectedCCs)
+
+stg2stg :: DynFlags
+        -> Module
+        -> [StgBinding]
+        -> IO ([StgBinding], CollectedCCs)

@@ -1,0 +1,5 @@
+module CoreSyn where
+
+data CoreRule
+type CoreProgram = [CoreBind]
+data CoreBind

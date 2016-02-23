@@ -1,0 +1,12 @@
+module DriverPhases where
+
+-- FAKE, not enough constructors
+data Phase
+    = CmmCpp
+    | Cmm
+    | As Bool
+    | StopLn
+instance Eq Phase
+
+data HscSource = HsSrcFile | HsBootFile | HsigFile
+instance Eq HscSource

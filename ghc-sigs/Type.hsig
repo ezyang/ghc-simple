@@ -1,0 +1,8 @@
+module Type(module Type, Type, TyThing(..), TyVar) where
+
+import TypeRep  (Type, TyThing(..))
+import Var      (TyVar)
+
+mkFunTy :: Type -> Type -> Type
+mkForAllTys :: [TyVar] -> Type -> Type
+mkFunTys :: [Type] -> Type -> Type

@@ -1,0 +1,6 @@
+module StgSyn where
+
+import Id (Id)
+
+data GenStgBinding bndr occ
+type StgBinding = GenStgBinding Id Id

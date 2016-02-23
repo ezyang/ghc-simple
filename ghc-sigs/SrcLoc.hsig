@@ -1,0 +1,9 @@
+module SrcLoc where
+
+data SrcSpan
+data GenLocated l e = L l e
+
+type Located e = GenLocated SrcSpan e
+
+unLoc :: GenLocated l e -> e
+noLoc :: e -> Located e

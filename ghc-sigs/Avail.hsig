@@ -1,0 +1,5 @@
+module Avail where
+
+import Name (Name)
+
+data AvailInfo = Avail Name | AvailTC Name [Name]

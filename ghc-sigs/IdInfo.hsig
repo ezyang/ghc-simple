@@ -1,0 +1,24 @@
+module IdInfo where
+
+import BasicTypes (InlinePragma, Arity)
+import Demand (StrictSig)
+
+data IdInfo
+data SpecInfo
+data IdDetails
+
+type ArityInfo = Arity
+
+infixl 1 `setSpecInfo`,
+         `setArityInfo`,
+         `setCallArityInfo`,
+         `setInlinePragInfo`,
+         `setStrictnessInfo`
+
+setSpecInfo :: IdInfo -> SpecInfo -> IdInfo
+setArityInfo :: IdInfo -> ArityInfo -> IdInfo
+setCallArityInfo :: IdInfo -> ArityInfo -> IdInfo
+setInlinePragInfo :: IdInfo -> InlinePragma -> IdInfo
+setStrictnessInfo :: IdInfo -> StrictSig -> IdInfo
+
+noCafIdInfo :: IdInfo

@@ -1,0 +1,20 @@
+module ErrUtils(module ErrUtils, MsgDoc, Severity(..)) where
+
+import Outputable   (SDoc, PrintUnqualified)
+import SrcLoc       (SrcSpan)
+import Bag          (Bag)
+
+import RecDynFlags (DynFlags, MsgDoc, Severity(..))
+
+data ErrMsg = ErrMsg {
+        errMsgSpan      :: SrcSpan,
+        errMsgContext   :: PrintUnqualified,
+        errMsgShortDoc  :: MsgDoc,   -- errMsgShort* should always
+        errMsgShortString :: String, -- contain the same text
+        errMsgExtraInfo :: MsgDoc,
+        errMsgSeverity  :: Severity
+    }
+
+type ErrorMessages = Bag ErrMsg
+
+printBagOfErrors :: DynFlags -> Bag ErrMsg -> IO ()

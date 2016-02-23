@@ -1,0 +1,11 @@
+module PrelInfo where
+
+import TypeRep (TyThing)
+import Id (Id)
+import Name (Name)
+import PrimOp (PrimOp)
+import CoreSyn (CoreRule)
+
+wiredInThings :: [TyThing]
+ghcPrimIds :: [Id]
+primOpRules :: Name -> PrimOp -> Maybe CoreRule

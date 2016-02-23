@@ -1,0 +1,12 @@
+module Id(module Id, Id) where
+
+import RecTypes
+
+import TypeRep  (Type)
+import IdInfo   (IdInfo, IdDetails)
+import Name     (Name)
+
+idName :: Id -> Name
+isPrimOpId :: Id -> Bool
+
+mkGlobalId :: IdDetails -> Name -> Type -> IdInfo -> Id

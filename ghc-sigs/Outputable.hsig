@@ -1,0 +1,8 @@
+module Outputable( module Outputable, SDoc, PprStyle ) where
+
+import RecDynFlags(DynFlags, SDoc, PprStyle)
+
+data PrintUnqualified
+
+showSDocForUser :: DynFlags -> PrintUnqualified -> SDoc -> String
+showSDoc :: DynFlags -> SDoc -> String

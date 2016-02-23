@@ -1,0 +1,3 @@
+module FastString where
+
+data FastString

@@ -41,7 +41,7 @@ import FastString
 import Demand
 import HscTypes
 import Avail
-import MkId (seqId)
+import MkId (seqId, mkPrimOpId)
 import Data.IORef (modifyIORef')
 import TyCon
 import CmmType
@@ -142,7 +142,7 @@ fixPrimOp opnfo str op =
     var
   where
     sig    = primOpSig opnfo str op
-    var    = mkGlobalId (PrimOpId op) name (opType sig) nfo
+    var    = mkPrimOpId op
     name   = mkWiredInName gHC_PRIM (primOpOcc op) unique (AnId var) UserSyntax
     unique = mkPrimOpIdUnique $ primOpTag op
     nfo    = flip setCallArityInfo (opArity sig) $

@@ -1,0 +1,8 @@
+module CorePrep where
+
+import HscTypes     (HscEnv)
+import Module       (ModLocation)
+import CoreSyn      (CoreProgram)
+import TyCon        (TyCon)
+
+corePrepPgm :: HscEnv -> ModLocation -> CoreProgram -> [TyCon] -> IO CoreProgram

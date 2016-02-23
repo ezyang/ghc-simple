@@ -1,0 +1,11 @@
+module BasicTypes where
+
+type Arity = Int
+data Fixity = Fixity Int FixityDirection
+data InlinePragma
+data FixityDirection = InfixL | InfixR | InfixN
+
+neverInlinePragma :: InlinePragma
+
+data SuccessFlag
+succeeded :: SuccessFlag -> bool

@@ -1,0 +1,17 @@
+module DriverPipeline(module DriverPipeline, PhasePlus(..), CompPipeline) where
+
+import HscTypes     (HscEnv)
+import Module       (ModuleName, ModLocation)
+import DriverPhases (HscSource, Phase)
+
+import RecDynFlags  (DynFlags, PhasePlus(..), CompPipeline, HscTarget(..))
+
+data PipeState
+hsc_env :: PipeState -> HscEnv
+
+getPipeState :: CompPipeline PipeState
+runPhase :: PhasePlus -> FilePath -> DynFlags -> CompPipeline (PhasePlus, FilePath)
+getLocation :: HscSource -> ModuleName -> CompPipeline ModLocation
+setModLocation :: ModLocation -> CompPipeline ()
+hscPostBackendPhase :: DynFlags -> HscSource -> HscTarget -> Phase
+phaseOutputFilename :: Phase -> CompPipeline FilePath

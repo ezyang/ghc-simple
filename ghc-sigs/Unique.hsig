@@ -1,0 +1,5 @@
+module Unique where
+
+data Unique
+
+mkPrimOpIdUnique :: Int -> Unique

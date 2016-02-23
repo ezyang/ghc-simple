@@ -16,11 +16,72 @@ maintainer:          anton@ekblad.cc
 copyright:           (c) 2015 Anton Ekblad
 category:            Development
 build-type:          Simple
-cabal-version:       >=1.10
+cabal-version:       >=1.23
 
 source-repository head
   type:     git
   location: https://github.com/valderman/ghc-simple.git
+
+library ghc-sigs
+  build-depends: base
+  required-signatures:
+    IfaceEnv
+    PrelInfo
+    PrimOp
+    IdInfo
+    Rules
+    PrelNames
+    Name
+    BasicTypes
+    Type
+    Unique
+    Id
+    TysWiredIn
+    TysPrim
+    FastString
+    Demand
+    HscTypes
+    Avail
+    MkId
+    TyCon
+    CmmType
+    UniqSupply
+    TypeRep
+    CoreSyn
+    OccName
+    Fingerprint
+    IfaceSyn
+    Var
+    Module
+    ConLike
+    CoAxiom
+
+    GHC
+    DriverPhases
+    DriverPipeline
+
+    BinIface
+    GhcMonad
+    HscMain
+    TidyPgm
+    StgSyn
+    CoreToStg
+    SimplStg
+    CorePrep
+    DynFlags
+    CostCentre
+
+    ErrUtils
+    Bag
+    SrcLoc
+    Outputable
+    Hooks
+    StaticFlags
+    Literal
+    DataCon
+    ForeignCall
+    Exception
+  hs-source-dirs: ghc-sigs
 
 library
   exposed-modules:
@@ -31,15 +92,14 @@ library
   other-extensions:
     CPP, PatternGuards, FlexibleInstances
   build-depends:
-    ghc          >=7.8  && <7.11,
-    base         >=4.7  && <4.9,
+    ghc-sigs,
+    base,
     ghc-paths    >=0.1  && <0.2,
     directory    >=1.2  && <1.3,
     filepath     >=1.3  && <1.5,
     bytestring   >=0.10 && <0.11,
-    binary       >=0.6  && <0.8
+    binary
   hs-source-dirs:
     src
   default-language:
     Haskell2010
-               

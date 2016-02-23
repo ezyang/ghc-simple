@@ -1,0 +1,4 @@
+module CoAxiom where
+
+data Branched
+data CoAxiom br

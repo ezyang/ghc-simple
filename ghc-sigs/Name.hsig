@@ -1,0 +1,11 @@
+module Name(module Name, module OccName, NamedThing(..), Name) where
+
+import RecTypes (TyThing, NamedThing(..), Name)
+
+import Module (Module)
+import Unique (Unique)
+import OccName
+
+data BuiltInSyntax = BuiltInSyntax | UserSyntax
+
+mkWiredInName :: Module -> OccName -> Unique -> TyThing -> BuiltInSyntax -> Name

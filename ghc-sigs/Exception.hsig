@@ -1,0 +1,5 @@
+module Exception where
+
+import Control.Monad.IO.Class
+
+class MonadIO m => ExceptionMonad m

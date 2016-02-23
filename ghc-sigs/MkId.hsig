@@ -1,0 +1,7 @@
+module MkId where
+
+import Id       (Id)
+import PrimOp   (PrimOp)
+
+seqId :: Id
+mkPrimOpId :: PrimOp -> Id

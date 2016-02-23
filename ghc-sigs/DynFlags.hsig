@@ -1,0 +1,7 @@
+module DynFlags(module DynFlags, DynFlags(..), GhcLink(..), HscTarget(..)) where
+
+import RecDynFlags  (DynFlags(..), GhcLink(..), HscTarget(..))
+
+class HasDynFlags m where
+    getDynFlags :: m DynFlags
+

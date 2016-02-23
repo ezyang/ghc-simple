@@ -1,0 +1,6 @@
+module TyCon(module TyCon, TyCon) where
+
+import Name (Name)
+import RecTypes (TyCon)
+
+tyConName :: TyCon -> Name

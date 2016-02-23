@@ -1,0 +1,12 @@
+module PrimOp where
+
+import OccName      (OccName)
+import BasicTypes   (Fixity)
+
+data PrimOp
+
+primOpTag :: PrimOp -> Int
+primOpOcc :: PrimOp -> OccName
+primOpFixity :: PrimOp -> Maybe Fixity
+
+allThePrimOps :: [PrimOp]

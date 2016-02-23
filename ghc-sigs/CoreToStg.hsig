@@ -1,0 +1,8 @@
+module CoreToStg where
+
+import DynFlags     (DynFlags)
+import Module       (Module)
+import CoreSyn      (CoreProgram)
+import StgSyn       (StgBinding)
+
+coreToStg :: DynFlags -> Module -> CoreProgram -> IO [StgBinding]

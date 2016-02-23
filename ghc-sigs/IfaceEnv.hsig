@@ -1,0 +1,7 @@
+module IfaceEnv where
+
+import UniqSupply (UniqSupply)
+import HscTypes (NameCache)
+import Name (Name)
+
+initNameCache :: UniqSupply -> [Name] -> NameCache

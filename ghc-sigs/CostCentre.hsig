@@ -1,0 +1,10 @@
+module CostCentre where
+
+data CostCentre
+data CostCentreStack
+
+type CollectedCCs
+  = ( [CostCentre]       -- local cost-centres that need to be decl'd
+    , [CostCentre]       -- "extern" cost-centres
+    , [CostCentreStack]  -- pre-defined "singleton" cost centre stacks
+    )

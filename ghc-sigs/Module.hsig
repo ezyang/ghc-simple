@@ -1,0 +1,20 @@
+module Module where
+
+data PackageKey
+instance Eq PackageKey
+data ModuleName
+instance Eq ModuleName
+data Module
+instance Eq Module
+data ModuleEnv elt
+
+modulePackageKey :: Module -> PackageKey
+packageKeyString :: PackageKey -> String
+moduleNameString :: ModuleName -> String
+moduleNameSlashes :: ModuleName -> FilePath
+
+data ModLocation = ModLocation {
+    ml_hs_file :: Maybe FilePath,
+    ml_hi_file :: FilePath,
+    ml_obj_file :: FilePath
+    }

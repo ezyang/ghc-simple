@@ -1,0 +1,50 @@
+module HscTypes( module HscTypes, ModIface(..), HscEnv, HscStatus(..), CgGuts, ModSummary, IfaceExport ) where
+
+import DriverPhases (HscSource, Phase)
+import BasicTypes   (Fixity)
+import OccName      (OccName, OccEnv)
+import UniqSupply   (UniqSupply)
+import Module       (Module, ModuleName, ModuleEnv, ModLocation)
+import Name         (Name)
+import Data.IORef   (IORef)
+import CoreSyn      (CoreProgram)
+import TyCon        (TyCon)
+import ErrUtils     (ErrorMessages)
+import Exception    (ExceptionMonad)
+
+import RecDynFlags  (ModIface(..), HscEnv, HscStatus(..), CgGuts, DynFlags, ModSummary, IfaceExport)
+
+type OrigNameCache = ModuleEnv (OccEnv Name)
+
+data NameCache = NameCache {
+        nsUniqs :: !UniqSupply,
+        nsNames :: !OrigNameCache
+    }
+
+emptyModIface :: Module -> ModIface
+mkIfaceFixCache :: [(OccName, Fixity)] -> OccName -> Fixity
+
+cg_binds :: CgGuts -> CoreProgram
+cg_tycons :: CgGuts -> [TyCon]
+
+-- Actually, this is bad, because then .. doesn't work correctly.
+ms_mod :: ModSummary -> Module
+ms_location :: ModSummary -> ModLocation
+ms_hsc_src :: ModSummary -> HscSource
+ms_mod_name :: ModSummary -> ModuleName
+
+data TargetId = TargetModule ModuleName | TargetFile FilePath (Maybe Phase)
+data Target
+targetId :: Target -> TargetId
+
+hsc_NC :: HscEnv -> IORef NameCache
+hsc_dflags :: HscEnv -> DynFlags
+
+data SourceError
+srcErrorMessages :: SourceError -> ErrorMessages
+
+type ModuleGraph = [ModSummary]
+
+handleSourceError :: ExceptionMonad m => (SourceError -> m a) -> m a -> m a
+
+data ModGuts

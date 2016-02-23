@@ -1,0 +1,5 @@
+module Var where
+
+data Var
+
+type TyVar = Var

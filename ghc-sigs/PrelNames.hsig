@@ -1,0 +1,7 @@
+module PrelNames where
+
+import Module (Module)
+import Name (Name)
+
+gHC_PRIM :: Module
+basicKnownKeyNames :: [Name]

@@ -1,0 +1,5 @@
+module Bag where
+
+data Bag a
+
+bagToList :: Bag a -> [a]

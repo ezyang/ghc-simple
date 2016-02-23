@@ -1,0 +1,5 @@
+module TysWiredIn where
+
+import TyCon (TyCon)
+
+coercibleTyCon :: TyCon

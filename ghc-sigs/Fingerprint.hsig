@@ -1,0 +1,3 @@
+module Fingerprint where
+
+data Fingerprint

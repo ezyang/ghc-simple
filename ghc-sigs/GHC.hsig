@@ -1,0 +1,36 @@
+module GHC (
+    module GHC,
+    ModSummary, Module, ModLocation(..),
+    DynFlags(..), HscTarget(..), GhcLink(..),
+    HscSource(..), moduleNameString,
+    Ghc, GhcMonad(..), GenLocated(..), Located, SrcSpan,
+    TargetId(..), Target, targetId,
+    getSessionDynFlags, setSessionDynFlags, unLoc) where
+
+import Control.Monad.IO.Class (MonadIO)
+import DynFlags     (DynFlags(..), HscTarget(..), GhcLink(..))
+import DriverPhases (HscSource(..), Phase)
+import HscTypes     (ModSummary, TargetId(..), Target, targetId, ModuleGraph)
+import Module       (Module, ModLocation(..), moduleNameString, ModuleName)
+import GhcMonad     (Ghc, GhcMonad(..), getSessionDynFlags, setSessionDynFlags)
+import SrcLoc       (SrcSpan, Located, GenLocated(..), unLoc)
+import BasicTypes   (SuccessFlag)
+
+depanal :: GhcMonad m => [ModuleName] -> Bool -> m ModuleGraph
+
+data LoadHowMuch
+    = LoadAllTargets
+    | LoadUpTo ModuleName
+    | LoadDependenciesOf ModuleName
+
+load :: GhcMonad m => LoadHowMuch -> m SuccessFlag
+
+setTargets :: GhcMonad m => [Target] -> m ()
+guessTarget :: GhcMonad m => String -> Maybe Phase -> m Target
+
+parseStaticFlags :: [Located String] -> IO ([Located String], [Located String])
+parseDynamicFlags :: MonadIO m =>
+                     DynFlags -> [Located String]
+                     -> m (DynFlags, [Located String], [Located String])
+
+runGhc :: Maybe FilePath -> Ghc a -> IO a

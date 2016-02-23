@@ -1,0 +1,6 @@
+module Rules where
+
+import CoreSyn (CoreRule)
+import IdInfo (SpecInfo)
+
+mkSpecInfo :: [CoreRule] -> SpecInfo
