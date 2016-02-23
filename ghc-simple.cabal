@@ -81,6 +81,9 @@ library ghc-sigs
     DataCon
     ForeignCall
     Exception
+
+    RecDynFlags
+    RecTypes
   hs-source-dirs: ghc-sigs
 
 library
